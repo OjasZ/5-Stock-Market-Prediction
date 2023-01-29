@@ -5,6 +5,7 @@ The stock market is a marketplace that allows for the seamless exchange of corpo
 
 We will use the ARIMA model to forecast the stock price of ARCH CAPITAL GROUP in this tutorial.
 
+
 What is ARIMA?
 
 Before working with non-stationary data, the Autoregressive Integrated Moving Average (ARIMA) Model converts it to stationary data. One of the most widely used models for predicting linear time series data is this one.
@@ -62,6 +63,8 @@ plt.plot(stock_data['Close'])
 plt.title('ARCH CAPITAL GROUP closing price')
 plt.show()
 
+
+
 Data Visualization
 
 We can also use a probability distribution to visualize the data in our series.
@@ -69,6 +72,8 @@ We can also use a probability distribution to visualize the data in our series.
 #Distribution of the dataset
 df_close = stock_data['Close']
 df_close.plot(kind='kde')
+
+
 
 Density plot
 
@@ -142,7 +147,10 @@ fig = plt.figure()
 fig = result.plot()  
 fig.set_size_inches(16, 9)
 
+
+
 trend and seasonality | Time Series Analysis Arima
+
 
 To reduce the magnitude of the values and the growing trend in the series, we first take a log of the series. We then calculate the rolling average of the series after obtaining the log of the series. A rolling average is computed by taking data from the previous 12 months and calculating a mean consumption value at each subsequent point in the series.
 
@@ -172,7 +180,10 @@ plt.plot(df_log, 'green', label='Train data')
 plt.plot(test_data, 'blue', label='Test data')
 plt.legend()
 
+
+
 Train and test data | Time Series Analysis Arima
+
 
 It’s time to choose the ARIMA model’s p,q, and d parameters. We chose the values of p,d, and q last time by looking at the ACF and PACF charts, but this time we’ll utilize Auto ARIMA to find the best parameters without looking at the ACF and PACF graphs.
 Auto ARIMA: Automatically discover the optimal order for an ARIMA model.
@@ -217,6 +228,8 @@ model = ARIMA(train_data, order=(1,1,2))
 fitted = model.fit(disp=-1)  
 print(fitted.summary())
 
+
+
 Summary
 
 Let’s now begin forecasting stock prices on the test dataset with a 95% confidence level.
@@ -241,6 +254,8 @@ plt.ylabel('ARCH CAPITAL GROUP Stock Price')
 plt.legend(loc='upper left', fontsize=8)
 plt.show()
 
+
+
 Prediction
 
 Our model played great, as you can see. Let’s take a look at some of the most common accuracy metrics for evaluating forecast results:
@@ -254,6 +269,8 @@ rmse = math.sqrt(mean_squared_error(test_data, fc))
 print('RMSE: '+str(rmse))
 mape = np.mean(np.abs(fc - test_data)/np.abs(test_data))
 print('MAPE: '+str(mape))
+
+
 
 Result
 
