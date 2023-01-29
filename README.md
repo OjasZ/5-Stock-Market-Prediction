@@ -1,8 +1,10 @@
 
 What is a Stock market?
+
 The stock market is a marketplace that allows for the seamless exchange of corporate stock purchases and sales. Every Stock Exchange has its own value for the Stock Index. The index is the average value derived by adding up the prices of various equities. This aids in the representation of the entire stock market as well as the forecasting of market movement over time. The stock market can have a significant impact on individuals and the economy as a whole. As a result, effectively predicting stock trends can reduce the risk of loss while increasing profit.
 
 We will use the ARIMA model to forecast the stock price of ARCH CAPITAL GROUP in this tutorial.
+
 What is ARIMA?
 
 Before working with non-stationary data, the Autoregressive Integrated Moving Average (ARIMA) Model converts it to stationary data. One of the most widely used models for predicting linear time series data is this one.
@@ -61,6 +63,7 @@ plt.title('ARCH CAPITAL GROUP closing price')
 plt.show()
 
 Data Visualization
+
 We can also use a probability distribution to visualize the data in our series.
 
 #Distribution of the dataset
@@ -82,9 +85,9 @@ ADF (Augmented Dickey-Fuller) Test
 
 One of the most widely used statistical tests is the Dickey-Fuller test. It can be used to determine whether or not a series has a unit root, and thus whether or not the series is stationary. This test’s null and alternate hypotheses are:
 
-Null Hypothesis: The series has a unit root (value of a =1)
+Null Hypothesis : The series has a unit root (value of a =1)
 
-Alternate Hypothesis: The series has no unit root.
+Alternate Hypothesis : The series has no unit root.
 
 If the null hypothesis is not rejected, the series is said to be non-stationary. The series can be linear or difference stationary as a result of this.
 
@@ -195,6 +198,7 @@ model_autoARIMA.plot_diagnostics(figsize=(15,8))
 plt.show()
 
 Final plot
+
 So, how should the plot diagnostics be interpreted?
 
 Top left: The residual errors appear to have a uniform variance and fluctuate around a mean of zero.
@@ -213,7 +217,7 @@ model = ARIMA(train_data, order=(1,1,2))
 fitted = model.fit(disp=-1)  
 print(fitted.summary())
 
-summary
+Summary
 
 Let’s now begin forecasting stock prices on the test dataset with a 95% confidence level.
 
@@ -251,6 +255,6 @@ print('RMSE: '+str(rmse))
 mape = np.mean(np.abs(fc - test_data)/np.abs(test_data))
 print('MAPE: '+str(mape))
 
-Msse
+Result
 
 With a MAPE of around 2.5%, the model is 97.5% accurate in predicting the next 15 observations.
